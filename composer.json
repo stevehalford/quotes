@@ -1,6 +1,12 @@
 {
     "require": {
         "slim/slim": "2.*",
-        "entomb/slim-json-api": "dev-master"
+        "entomb/slim-json-api": "dev-master",
+        "illuminate/database": "4.*"
+    },
+    "autoload": {
+        "classmap": [
+            "app/models"
+        ]
     }
 }
