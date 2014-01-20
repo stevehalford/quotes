@@ -1,0 +1,23 @@
+{
+  "name": "quotes-api",
+  "version": "0.0.0",
+  "homepage": "https://github.com/stevehalford/quotes-api",
+  "authors": [
+    "Steve Halford <steve.halford@boxuk.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-route": "~1.2.9",
+    "angular": "~1.2.9",
+    "bootstrap": "~3.0.3"
+  }
+}

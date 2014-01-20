@@ -37,4 +37,9 @@ $app->get('/quotes/rss', function () use ($app) {
     ));
 });
 
+$app->get('/quotes', function () use ($app) {
+
+    $app->render('index.php');
+});
+
 $app->run();
