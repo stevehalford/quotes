@@ -11,14 +11,29 @@ $app = new \Slim\Slim(array(
 
 require '../config.php';
 
-$app->view(new \JsonApiView());
-$app->add(new \JsonApiMiddleware());
+$view = $app->view();
+$view->setTemplatesDirectory('../templates');
 
-$app->get('/quotes', function () use ($app) {
+$app->hook('slim.before', function () use ($app) {
+    $app->view()->appendData(array('baseUrl' => 'quotes_api'));
+});
+
+$app->get('/api/quotes', function () use ($app) {
     $quotes = Quote::all();
 
-    $app->render(200, array(
-        'quotes' => json_encode($quotes->toArray()),
+    $app->response()->header('Content-Type', 'application/json');
+    echo json_encode(array(
+        'quotes' => $quotes->toArray(),
+    ));
+});
+
+$app->get('/quotes/rss', function () use ($app) {
+    $quotes = Quote::all();
+
+    $app->response()->header('Content-Type', 'text/xml');
+
+    $app->render('rss.php', array(
+        'quotes' => $quotes->toArray(),
     ));
 });
 
